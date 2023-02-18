@@ -1,0 +1,30 @@
+<div class="container">
+    <h2>Users</h2>
+    <br>
+    <div class="row">
+        {{#each users}}
+        <div class="card col-md-3 m-2 mb-4" style="width: 18rem;">
+            <img src="{{avatar}}" class="card-img-top" alt="avatar">
+            <div class="card-body">
+                <h5 class="card-title">Username: {{username}}</h5>
+                <p class="card-text">Description: {{description}}</p>
+                <div class="row">
+                    <a href="/user/{{_id}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                    <form action="/user/{{_id}}/delete" method="POST">
+                        <div class="d-grid">
+                            <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                        </div>
+                    </form>
+                    <a href="/user/{{id}}" class="btn btn-dark btn-sm">Go to profile</a>
+                </div>
+
+
+            </div>
+
+
+
+
+        </div>
+        {{/each}}
+    </div>
+</div>
