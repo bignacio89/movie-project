@@ -12,11 +12,11 @@ const commentSchema = new Schema(
             type: Date,
             default: Date.now
         },
-        imdbId: {
+        movie: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Movie',
         },
-        userId: {
+        owner: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
         }
