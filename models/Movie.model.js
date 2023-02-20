@@ -1,39 +1,39 @@
 const { Schema, model } = require('mongoose');
 const movieSchema = new Schema(
     {
-        Title: {
+        title: {
             type: String,
             required: true,
         },
-        Year: {
+        year: {
             type: String
         },
-        Runtime: {
+        runtime: {
             type: String
         },
-        Genre: {
+        genre: {
             type: String,
             required: true,
         },
-        Director: {
+        director: {
             type: String
         },
-        Actors: {
+        actors: {
             type: String
         },
-        Plot: {
+        plot: {
             type: String
         },
-        Poster: {
+        poster: {
             type: String,
             required: true,
         },
-        Type: {
+        type: {
             type: String,
             enum: ['movie', 'series'],
             required: true,
         },
-        Metascore: {
+        metascore: {
             type: String
         },
         imdbRating: {
@@ -42,6 +42,9 @@ const movieSchema = new Schema(
         imdbID: {
             type: String
         },
+        owner: {
+            type: String
+        }
     },
     {
         timestamps: true

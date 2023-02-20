@@ -1,8 +1,9 @@
 const express = require('express');
+const { isLoggedIn, isLoggedOut, checkRole } = require('../middlewares/route-guard');
 const router = express.Router();
 const User = require('../models/User.model')
 
-router.get('/user/list', (req, res) => {
+router.get('/user/list', isLoggedIn, (req, res, next) => {
 
     User
         .find()
@@ -11,19 +12,24 @@ router.get('/user/list', (req, res) => {
 })
 
 // Render user profile
-router.get('/user/:id', (req, res) => {
+router.get('/user/:id', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
 
     User
         .findById(id)
-        .then(user => res.render('user/profile', user))
+        .then(user => {
+            const isADMIN = req.session.currentUser?.role === 'ADMIN'
+            res.render('user/profile', {
+                user, isADMIN
+            })
+        })
         .catch(err => next(err))
 })
 
 
 // Edit form render
-router.get('/user/:id/edit', (req, res) => {
+router.get('/user/:id/edit', isLoggedIn, checkRole('ADMIN'), (req, res, next) => {
 
     const { id } = req.params
 
@@ -35,20 +41,20 @@ router.get('/user/:id/edit', (req, res) => {
 
 
 // Edit form handler
-router.post('/user/:id/edit', (req, res) => {
-
-    const { username, email, avatar, description, id } = req.body
+router.post('/user/:id/edit', isLoggedIn, checkRole('ADMIN'), (req, res, next) => {
+    const { id } = req.params
+    const { username, email, avatar, description } = req.body
 
     User
         .findByIdAndUpdate(id, { username, email, avatar, description })
-        .then(user => res.redirect(`/user/list`))
+        .then(() => res.redirect(`/user/list`))
         .catch(err => next(err))
 })
 
 
 
 // Delete user
-router.post('/user/:id/delete', (req, res) => {
+router.post('/user/:id/delete', isLoggedIn, checkRole('ADMIN'), (req, res, next) => {
 
     const { id } = req.params
 

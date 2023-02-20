@@ -28,21 +28,21 @@ const userSchema = new Schema(
     },
     role: {
       type: String,
-      enum: ['admin', 'user'],
-      default: 'user'
+      enum: ['ADMIN', 'USER'],
+      default: 'USER'
     },
     recommendations: [{
       imdbID: String,
-      Title: String,
-      Year: Number,
-      Runtime: String,
-      Genre: String,
-      Director: String,
-      Actors: String,
-      Plot: String,
-      Poster: String,
-      Type: String,
-      Metascore: String,
+      title: String,
+      year: Number,
+      runtime: String,
+      genre: String,
+      director: String,
+      actors: String,
+      plot: String,
+      poster: String,
+      type: String,
+      metascore: String,
       imdbRating: String,
       comments: [{
         type: mongoose.Schema.Types.ObjectID,
