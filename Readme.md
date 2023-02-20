@@ -8,9 +8,9 @@
 | GET               | `/users/:id/edit`                       | Update user                       |      |
 | POST              | `/users/:id/edit`                       | Update user                       |      |
 | POST              | `/users/:id/delete`                     | Delete                            |      |
-| GET               | `/users/:id/recomendation`              | List of recomendation             |      |
-| POST              | `/users/:id/recomendation`              | List of recomendation             |      |
-| POST              | `/users/:id/recomendation/delete`       | Delete recomendation              |      |
+| GET               | `/users/:id/recomendation`              | List of recomendation             | Yes  |
+| POST              | `/users/:id/recomendation`              | List of recomendation             | Yes  |
+| POST              | `/users/:id/recomendation/delete`       | Delete recomendation              | Yes  |
 | GET               | `/log-in`                               | User login                        |      |
 | POST              | `/log-in`                               | User login                        |      |
 | GET               | `/movies/random`                        | List random movies                | Yes  |
