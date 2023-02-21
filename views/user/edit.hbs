@@ -3,7 +3,7 @@
 
         <h1>Edit Profile</h1>
 
-        <form action="/user/{{_id}}/edit" method="POST">
+        <form action="/user/{{_id}}/edit" method="POST" enctype="multipart/form-data">
 
             <div class="mb-3">
                 <label for="usernameInput" class="form-label">Username:</label>
@@ -22,8 +22,8 @@
             </div>
 
             <div class="mb-3">
-                <label for="imageInput" class="form-label">Avatar:</label>
-                <input type="url" class="form-control" name="avatar" id="imageInput" value="{{avatar}}">
+                <label for="avatar" class="form-label">Avatar:</label>
+                <input type="file" class="form-control" name="avatar" id="avatar" value="{{avatar}}">
             </div>
             <div>
                 <button type="submit" class="btn btn-dark">Save changes</button>

@@ -3,7 +3,7 @@
 
         <h1>Sign Up</h1>
 
-        <form action="/signup" method="POST">
+        <form action="/signup" method="POST" enctype="multipart/form-data">
 
             <div class="mb-3">
                 <label for="usernameInput" class="form-label">Username:</label>
@@ -26,8 +26,8 @@
             </div>
 
             <div class="mb-3">
-                <label for="imageInput" class="form-label">Avatar:</label>
-                <input type="url" class="form-control" name="avatar" id="imageInput">
+                <label for="avatar" class="form-label">Avatar:</label>
+                <input type="file" class="form-control" name="avatar" id="avatar">
             </div>
             <div>
                 <button type="submit" class="btn btn-dark">Register</button>

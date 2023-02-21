@@ -1,5 +1,6 @@
 const express = require('express');
 const { isLoggedIn, isLoggedOut, checkRole } = require('../middlewares/route-guard');
+const uploaderMiddleware = require('../middlewares/uploader');
 const router = express.Router();
 const User = require('../models/User.model')
 
@@ -41,9 +42,10 @@ router.get('/user/:id/edit', isLoggedIn, checkRole('ADMIN'), (req, res, next) =>
 
 
 // Edit form handler
-router.post('/user/:id/edit', isLoggedIn, checkRole('ADMIN'), (req, res, next) => {
+router.post('/user/:id/edit', isLoggedIn, checkRole('ADMIN'), uploaderMiddleware.single('avatar'), (req, res, next) => {
     const { id } = req.params
-    const { username, email, avatar, description } = req.body
+    const { username, email, description } = req.body
+    const { path: avatar } = req.file
 
     User
         .findByIdAndUpdate(id, { username, email, avatar, description })
