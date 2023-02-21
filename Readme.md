@@ -15,5 +15,11 @@
 | POST              | `/log-in`                               | User login                        |      |
 | GET               | `/movies/random`                        | List random movies                | Yes  |
 | GET               | `/movies/search?q{keywords}`            | Searcher movies                   | Yes  |
-| POST              | `/admin/create-movies`                  | Create movies                     |      |
+| GET               | `/movies/list`                          | List of all movies                |      |
+| GET               | `/movies/create`                        | Create movies                     |      |
+| POST              | `/movies/create`                        | Create movies                     |      |
+| GET               | `/movies/:id`                           | Details movies                    |      |
+| GET               | `/movies/:id/edit`                      | Update movie                      |      |
+| POST              | `/movies/:id/edit`                      | Update movie                      |      |
+| POST              | `/movies/:id/delete`                    | Delete movie                      |      |
 | ----------------- | --------------------------------------- | --------------------------------- | ---- |
