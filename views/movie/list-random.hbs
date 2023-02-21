@@ -5,22 +5,19 @@
         <h2> Movie Random List </h2>
         <div class="row">
             {{#each movies }}
+            <form action="/favorites/{{id}}" method="POST">
 
-            <div class="card col-md-3 m-2 mb-4">
-                <img src="https://www.themoviedb.org/t/p/w440_and_h660_face{{poster_path}}" alt="image">
-                <h3>{{original_title}}</h3>
-                <p>{{overview}}</p>
-
-            </div>
-
-
+                <div class="card col-md-3 m-2 mb-4">
+                    <img src="https://www.themoviedb.org/t/p/w440_and_h660_face{{poster_path}}" alt="image">
+                    <h3>{{original_title}}</h3>
+                    <p>{{overview}}</p>
+                    <button type="submit" class="btn btn-dark">Add to Recommendations</button>
 
 
+
+                </div>
+            </form>
             {{/each}}
-
-
-
-
 
 
         </div>

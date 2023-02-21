@@ -10,6 +10,19 @@
     <hr>
     <p>Role: {{user.role}}</p>
 
+    <div class="row">
+        {{#each movie}}
+
+        <div class="card col-md-3">
+            <img src="https://www.themoviedb.org/t/p/w440_and_h660_face{{poster_path}}" alt="" srcset="">
+            <h3>{{title}}</h3>
+            <p>{{overview}}</p>
+        </div>
+
+        {{/each}}
+    </div>
+
+
     {{#if isADMIN}}
     <a href="/user/{{user._id}}/edit" class="btn btn-warning btn-sm">Edit</a>
     <form action="/user/{{user._id}}/delete" method="POST">

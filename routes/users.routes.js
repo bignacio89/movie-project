@@ -3,6 +3,10 @@ const { isLoggedIn, isLoggedOut, checkRole } = require('../middlewares/route-gua
 const uploaderMiddleware = require('../middlewares/uploader');
 const router = express.Router();
 const User = require('../models/User.model')
+const axios = require("axios")
+const MovieApi = require('../services/movies.services')
+
+const movieApi = new MovieApi()
 
 router.get('/user/list', isLoggedIn, (req, res, next) => {
 
@@ -17,15 +21,30 @@ router.get('/user/:id', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
 
-    User
-        .findById(id)
-        .then(user => {
-            const isADMIN = req.session.currentUser?.role === 'ADMIN'
-            res.render('user/profile', {
-                user, isADMIN
-            })
+    const recomMovies = req.session.currentUser.recommendations.map(elm => {
+        return movieApi.getMovie(elm)
+    })
+
+    Promise
+        .all(recomMovies)
+        .then((movie) => {
+            res.render('user/profile', { user: req.session.currentUser, movie })
+            console.log(movie)
         })
-        .catch(err => next(err))
+
+
+
+    // User
+    //     .findById(id)
+    //     .then(user => {
+    //         const isADMIN = req.session.currentUser?.role === 'ADMIN'
+    //         res.render('user/profile', {
+    //             user, isADMIN
+    //         })
+    //     })
+    //     .catch(err => next(err))
+
+
 })
 
 

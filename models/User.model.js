@@ -31,24 +31,7 @@ const userSchema = new Schema(
       enum: ['ADMIN', 'USER'],
       default: 'USER'
     },
-    recommendations: [{
-      imdbID: String,
-      title: String,
-      year: Number,
-      runtime: String,
-      genre: String,
-      director: String,
-      actors: String,
-      plot: String,
-      poster: String,
-      type: String,
-      metascore: String,
-      imdbRating: String,
-      comments: [{
-        type: mongoose.Schema.Types.ObjectID,
-        ref: 'Comment'
-      }]
-    }]
+    recommendations: [String]
   },
   {
     timestamps: true

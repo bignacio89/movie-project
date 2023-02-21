@@ -13,8 +13,7 @@ const commentSchema = new Schema(
             default: Date.now
         },
         movie: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Movie',
+            type: String
         },
         owner: {
             type: mongoose.Schema.Types.ObjectId,
