@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row justify-content-center">
+
+        <h1>Look for random movie</h1>
+
+        <form action="/movies/random" method="GET">
+
+            {{!-- <div class="mb-3">
+                <label for="idInput" class="form-label">ID movie:</label>
+                <input type="text" class="form-control" name="id" id="idInput">
+            </div> --}}
+
+            <div class="mb-3">
+                <label for="yearInput" class="form-label">Year:</label>
+                <input type="text" class="form-control" name="year" id="yearInput">
+            </div>
+
+            <div class="mb-3">
+                <label for="rateInput" class="form-label">Rate:</label>
+                <input type="text" class="form-control" name="rate" id="rateInput">
+            </div>
+
+            <div class="mb-3">
+                <label for="genreInput" class="form-label">Genre:</label>
+                <input type="text" class="form-control" name="genre" id="genreInput">
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-dark">Search</button>
+            </div>
+
+            {{#if errorMessage}}
+            <div id="errorMessage">
+                <p>{{errorMessage}}</p>
+            </div>
+            {{/if}}
+
+
+        </form>
+
+
+    </div>
+</div>
