@@ -31,7 +31,6 @@ router.get('/user/:id', isLoggedIn, (req, res, next) => {
                 .all(recomMovies)
                 .then((movie) => {
                     res.render('user/profile', { user, movie, isADMIN })
-                    console.log(movie)
                 })
         })
         .catch(err => next(err))

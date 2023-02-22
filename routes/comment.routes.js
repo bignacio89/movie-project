@@ -16,12 +16,11 @@ router.get('/comments', (req, res, next) => {
 
 router.post('/comments', isLoggedIn, (req, res, next) => {
 
-    console.log(req.body)
+
 
     const { text, movie } = req.body
     const owner = req.session.currentUser._id
 
-    // TENDREMOS QUE LLENAR EL ARRAY DE COMENTARIOS DE LA MOVIE CON EL NUEVO COMENTARIO
     Comment
         .create({ text, movie, owner })
         .then(() => res.redirect(`/movie/${movie}/details`))

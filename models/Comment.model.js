@@ -6,7 +6,7 @@ const commentSchema = new Schema(
         text: {
             type: String,
             trim: true,
-            require: true
+            required: true
         },
         movie: {
             type: String
@@ -15,14 +15,13 @@ const commentSchema = new Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
         }
-
     },
     {
         timestamps: true
     }
 );
 
-const Comment = model('comment', commentSchema);
+const Comment = model('Comment', commentSchema);
 
 module.exports = Comment;
 

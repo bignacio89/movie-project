@@ -1,6 +1,6 @@
 <div class="container">
 
-    <h1>Profile of {{user.username}}</h1>
+    {{!-- <h1>Profile of {{user.username}}</h1>
     <hr>
     <img src="{{user.avatar}}" alt="avatar">
     <hr>
@@ -8,19 +8,69 @@
     <hr>
     <p>Email: {{user.email}}</p>
     <hr>
-    <p>Role: {{user.role}}</p>
+    <p>Role: {{user.role}}</p> --}}
+
+    <div class="container px-4 py-5">
+        <h2 class="pb-2 border-bottom">Movie Lovers Recommendations</h2>
+
+        <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
+            <div class="col col-lg-3 d-flex flex-column align-items-start gap-2">
+                <img class="img-fluid img-thumbnail" src="{{user.avatar}}" alt="{{user.username}}">
+            </div>
+
+            <div class="col">
+                <div class="row row-cols-1 row-cols-sm-2 g-4">
+                    <div class="col d-flex flex-column gap-2">
+                        <h4 class="fw-semibold mb-0">Name:</h4>
+                        <p class="text-muted">{{user.username}}</p>
+                    </div>
+
+                    <div class="col d-flex flex-column gap-2">
+                        <h4 class="fw-semibold mb-0">Description:</h4>
+                        <p class="text-muted">{{user.description}}</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 
     <div class="row">
-        {{#each movie}}
 
-        <div class="card col-md-4">
-            <img src="https://www.themoviedb.org/t/p/w440_and_h660_face{{poster_path}}" alt="" srcset="">
-            <h3>{{title}}</h3>
-            <p>{{overview}}</p>
-            <a href='/movie/{{id}}/details' class="btn btn-primary">Go to details</a>
+        <div class="album py-5 bg-light">
+            <div class="container">
+
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    {{#each movie}}
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <img class="bd-placeholder-img card-img-top" height="100%"
+                                src="https://www.themoviedb.org/t/p/w440_and_h660_face{{poster_path}}" alt="">
+                            <div class="card-body">
+                                <h4>{{original_title}}</h4>
+                                <p class="card-text">{{overview}}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href='/movie/{{id}}/details'
+                                            class="btn btn-sm btn-outline-secondary">View</a>
+                                        <a href="/" class="btn btn-sm btn-outline-secondary">Edit</a>
+
+                                    </div>
+                                    <small class="text-muted">{{runtime}} min.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
         </div>
 
-        {{/each}}
+
+
 
     </div>
 
