@@ -15,6 +15,9 @@ router.get('/comments', (req, res, next) => {
 })
 
 router.post('/comments', isLoggedIn, (req, res, next) => {
+
+
+
     const { text, movie } = req.body
     const owner = req.session.currentUser._id
 

@@ -36,7 +36,7 @@ const movieSchema = new Schema(
             type: String
         },
         comments: [{
-            ref: 'comment',
+            ref: 'Comment',
             type: Schema.Types.ObjectId
         }],
     },
