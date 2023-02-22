@@ -25,7 +25,9 @@
                   <li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
                   <li><a href="/movie/search" class="nav-link px-2 text-white">Random Movie</a></li>
                   <li><a href="/user/list" class="nav-link px-2 text-white">Users</a></li>
+                  {{#if ...isADMIN}}
                   <li><a href="/movies/create" class="nav-link px-2 text-white">Add new movie</a></li>
+                  {{/if}}
                   <li><a href="#" class="nav-link px-2 text-white">About</a></li>
                </ul>
 

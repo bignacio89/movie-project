@@ -15,18 +15,26 @@ router.get('/comments', (req, res, next) => {
 })
 
 router.post('/comments', isLoggedIn, (req, res, next) => {
-
-    console.log(req.body)
-
     const { text, movie } = req.body
     const owner = req.session.currentUser._id
 
-    // TENDREMOS QUE LLENAR EL ARRAY DE COMENTARIOS DE LA MOVIE CON EL NUEVO COMENTARIO
     Comment
         .create({ text, movie, owner })
         .then(() => res.redirect(`/movie/${movie}/details`))
         .catch(err => next(err))
 })
+
+router.post('/comments/:id/delete', isLoggedIn, (req, res, next) => {
+    const { movie } = req.body
+    const { id } = req.params
+
+    Comment
+        .findByIdAndDelete(id)
+        .then(() => res.redirect(`/movie/${movie}/details`))
+        .catch(err => next(err))
+})
+
+
 
 
 module.exports = router

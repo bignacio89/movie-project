@@ -21,7 +21,7 @@ const checkRole = (...roles) => (req, res, next) => {
         next()
     }
     else {
-        res.render('auth/login', { errorMessage: 'No dispones de permiso' })
+        res.render('auth/login', { errorMessage: 'Only Admin' })
     }
 }
 

@@ -39,8 +39,6 @@ const movieSchema = new Schema(
             ref: 'comment',
             type: Schema.Types.ObjectId
         }],
-
-        // CAMPO DE COMENTARIOS => ARRAY DE IDs DE COMENTARIOS
     },
     {
         timestamps: true

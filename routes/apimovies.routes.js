@@ -40,11 +40,9 @@ router.get('/movie/:movie_id/details', (req, res, next) => {
     movieApi
         .getMovie(movie_id)
         .then((movie) => {
-            // const { original_title, release_date, runtime, genres, overview, poster_path, vote_average } = movie
-            // const newMovie = { original_title, release_date, runtime, genres, overview, poster_path, vote_average }
-            // Movie.create(newMovie)
             Comment
                 .find({ movie: movie_id })
+                .populate('owner')
                 .then((comments) => res.render('movie/movie-details', { movie, comments }))
         })
         .catch(err => next(err))

@@ -6,7 +6,7 @@ const commentSchema = new Schema(
         text: {
             type: String,
             trim: true,
-            require: true
+            required: true
         },
         movie: {
             type: String
