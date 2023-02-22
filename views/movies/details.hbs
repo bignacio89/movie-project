@@ -1,20 +1,16 @@
 <div class="container">
 
-    <h1>{{movies.title}}</h1>
+    <h1>{{movies.original_title}}</h1>
     <hr>
-    <img src="{{movies.poster}}" alt="movie">
+    <img src="https://www.themoviedb.org/t/p/w440_and_h660_face{{movies.poster_path}}" alt="movie">
     <hr>
-    <p>Plot: {{movies.plot}}</p>
+    <p>{{movies.overview}}</p>
     <hr>
-    <p>Year: {{movies.year}}</p>
+    <p>Date: {{movies.release_date}}</p>
     <p>Runtime: {{movies.runtime}}</p>
-    <p>Genre: {{movies.genre}}</p>
-    <p>Director: {{movies.director}}</p>
-    <p>Actors: {{movies.actors}}</p>
-    <p>Type: {{movies.type}}</p>
-    <p>Metascore: {{movies.metascore}}</p>
-    <p>IMDB Rating: {{movies.imdbRating}}</p>
-    <p>Owner: {{movies.owner}}</p>
+    <p>Genre: {{movies.genres.[0].name}}</p>
+    <p>Score: {{movies.vote_average}}</p>
+
 
 
     <a href="/movies/{{movies._id}}/edit" class="btn btn-warning btn-sm">Edit</a>

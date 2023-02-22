@@ -37,8 +37,12 @@ app.use("/", authRoutes);
 
 const moviesRoutes = require("./routes/movies.routes");
 app.use("/", moviesRoutes);
+
 const apimovieRoutes = require("./routes/apimovies.routes");
 app.use("/", apimovieRoutes);
+
+const commentRoutes = require("./routes/comment.routes");
+app.use("/", commentRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);

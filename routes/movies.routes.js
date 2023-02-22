@@ -19,11 +19,11 @@ router.get('/movies/create', (req, res, next) => {
 })
 
 router.post('/movies/create', uploaderMiddleware.single('poster'), (req, res, next) => {
-    const { title, year, runtime, genre, director, actors, plot, type, metascore, imdbRating, imdbID, owner } = req.body
-    const { path: poster } = req.file
+    const { original_title, release_date, runtime, genres, overview, vote_average } = req.body
+    const { path: poster_path } = req.file
 
     Movie
-        .create({ title, year, runtime, genre, director, actors, plot, poster, type, metascore, imdbRating, imdbID, owner })
+        .create({ original_title, release_date, runtime, genres, overview, poster_path, vote_average })
         .then(() => res.redirect('/movies/list'))
         .catch(err => next(err))
 })
@@ -52,11 +52,11 @@ router.get('/movies/:id/edit', (req, res, next) => {
 
 router.post('/movies/:id/edit', uploaderMiddleware.single('poster'), (req, res, next) => {
     const { id } = req.params
-    const { title, year, runtime, genre, director, actors, plot, type, metascore, imdbRating, imdbID, owner } = req.body
-    const { path: poster } = req.file
+    const { original_title, release_date, runtime, genres, overview, vote_average } = req.body
+    const { path: poster_path } = req.file
 
     Movie
-        .findByIdAndUpdate(id, { title, year, runtime, genre, director, actors, plot, poster, type, metascore, imdbRating, imdbID, owner })
+        .findByIdAndUpdate(id, { original_title, release_date, runtime, genres, overview, vote_average, poster_path })
         .then(() => res.redirect(`/movies/list`))
         .catch(err => next(err))
 })

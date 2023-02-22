@@ -2,13 +2,36 @@
 
     <div class="row justify-content-center">
 
-        <h2> Movie Details </h2>
+        <h1> Movie Details: </h1>
 
-        <ul>
+        <h2>{{movie.original_title}}</h2>
+        <hr>
+        <img src="https://www.themoviedb.org/t/p/w440_and_h660_face{{movie.poster_path}}" alt="movie">
+        <hr>
+        <p>Overview: {{movie.overview}}</p>
+        <hr>
+        <p>Genre: {{movie.genres}}</p>
+        <p>Score: {{movie.vote_average}}</p>
+        <p>Runtime: {{movie.runtime}} min</p>
 
-            <li> {{original_title}} </a></li>
 
-        </ul>
+    </div>
+    <div class="row justify-content-center">
+        {{#each comments}}
+        <p class="card-text">{{text}}</p>
+        {{/each}}
+        <form action='/comments' method="POST">
+            <div class="mb-3">
+                <label for="text" class="form-label">Comment:</label>
+                <input type="text" class="form-control" id="text" name="text">
+            </div>
+            <input type="hidden" name="movie" value={{movie.id}}>
+
+            <div class="d-grid mt-5">
+                <button type="submit" class="btn btn-dark btn-lg">Add comment</button>
+            </div>
+
+        </form>
 
     </div>
 

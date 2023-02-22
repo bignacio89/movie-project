@@ -4,10 +4,11 @@
     <div class="row">
         {{#each movies}}
         <div class="card col-md-3 m-2 mb-4" style="width: 18rem;">
-            <img src="{{poster}}" class="card-img-top" alt="poster">
+            <img src="https://www.themoviedb.org/t/p/w440_and_h660_face{{poster_path}}" class="card-img-top"
+                alt="poster">
             <div class="card-body">
-                <h5 class="card-title">{{title}}</h5>
-                <p class="card-text">Genre: {{genre}}</p>
+                <h5 class="card-title">{{original_title}}</h5>
+                <p class="card-text">Genre: {{genres.[0].name}}</p>
                 <div class="row">
 
                     <a href="/movies/{{id}}" class="btn btn-dark btn-sm">Go to details</a>

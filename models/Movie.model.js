@@ -1,50 +1,46 @@
 const { Schema, model } = require('mongoose');
 const movieSchema = new Schema(
     {
-        title: {
+        original_title: {
             type: String,
             required: true,
         },
-        year: {
+        release_date: {
             type: String
         },
         runtime: {
             type: String
         },
-        genre: {
+        genres: {
+            type: Array,
+            items: {
+                type: Object,
+                properties: {
+                    id: {
+                        type: String
+                    },
+                    name: {
+                        type: String
+                    }
+                }
+            }
+        },
+        overview: {
+            type: String
+        },
+        poster_path: {
             type: String,
             required: true,
         },
-        director: {
+        vote_average: {
             type: String
         },
-        actors: {
-            type: String
-        },
-        plot: {
-            type: String
-        },
-        poster: {
-            type: String,
-            required: true,
-        },
-        type: {
-            type: String,
-            enum: ['movie', 'series'],
-            required: true,
-        },
-        metascore: {
-            type: String
-        },
-        imdbRating: {
-            type: String
-        },
-        imdbID: {
-            type: String
-        },
-        owner: {
-            type: String
-        }
+        comments: [{
+            ref: 'comment',
+            type: Schema.Types.ObjectId
+        }],
+
+        // CAMPO DE COMENTARIOS => ARRAY DE IDs DE COMENTARIOS
     },
     {
         timestamps: true

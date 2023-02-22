@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const axios = require("axios")
 const { isLoggedIn, isLoggedOut, checkRole } = require('../middlewares/route-guard');
-
-
+const Comment = require('./../models/Comment.model')
+const Movie = require('../models/Movie.model')
 const MovieApi = require('../services/movies.services')
 
 const movieApi = new MovieApi()
@@ -30,6 +30,24 @@ router.get('/movie/random', (req, res, next) => {
         })
         .catch(err => next(err))
 
+})
+
+// details movies
+
+router.get('/movie/:movie_id/details', (req, res, next) => {
+    const { movie_id } = req.params
+
+    movieApi
+        .getMovie(movie_id)
+        .then((movie) => {
+            // const { original_title, release_date, runtime, genres, overview, poster_path, vote_average } = movie
+            // const newMovie = { original_title, release_date, runtime, genres, overview, poster_path, vote_average }
+            // Movie.create(newMovie)
+            Comment
+                .find({ movie: movie_id })
+                .then((comments) => res.render('movie/movie-details', { movie, comments }))
+        })
+        .catch(err => next(err))
 })
 
 // add movie to user recommendations 
