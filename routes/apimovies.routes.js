@@ -71,20 +71,11 @@ router.post('/recommendations/:movie_id', isLoggedIn, (req, res, next) => {
 
     User
         .findByIdAndUpdate(user_id, { $addToSet: { recommendations: movie_id } })
-        .then(() => res.redirect(`/user/${user_id}`))
+        .then(() => res.redirect(`/movie/list-random`))
         .catch(err => next(err))
 
 
 })
 
-// router.post('/favorites/:movie_id/delete', isLoggedIn, (req, res, next) => {
-//     const { movie_id } = req.params
-//     const user_id = req.session.currentUser._id
-
-//     User
-//         .findByIdAndUpdate(user_id, { $pull: { recommendations: movie_id } })
-//         .then(() => res.redirect(`/user/${user_id}`))
-//         .catch(err => next(err))
-// })
 
 module.exports = router
