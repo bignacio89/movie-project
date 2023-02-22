@@ -50,7 +50,7 @@ router.get('/movie/:movie_id/details', (req, res, next) => {
 
 // add movie to user recommendations 
 
-router.post('/favorites/:movie_id', isLoggedIn, (req, res, next) => {
+router.post('/recommendations/:movie_id', isLoggedIn, (req, res, next) => {
     const { movie_id } = req.params
     const user_id = req.session.currentUser._id
 
@@ -59,6 +59,17 @@ router.post('/favorites/:movie_id', isLoggedIn, (req, res, next) => {
         .then(() => res.redirect(`/user/${user_id}`))
         .catch(err => next(err))
 
+
 })
+
+// router.post('/favorites/:movie_id/delete', isLoggedIn, (req, res, next) => {
+//     const { movie_id } = req.params
+//     const user_id = req.session.currentUser._id
+
+//     User
+//         .findByIdAndUpdate(user_id, { $pull: { recommendations: movie_id } })
+//         .then(() => res.redirect(`/user/${user_id}`))
+//         .catch(err => next(err))
+// })
 
 module.exports = router
