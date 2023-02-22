@@ -32,6 +32,21 @@ router.get('/movie/random', (req, res, next) => {
 
 })
 
+//search for title
+
+router.get('/movie/search', (req, res, next) => {
+
+    const searchFor = req.query.search
+    console.log(searchFor)
+    movieApi
+        .getTitle(searchFor)
+        .then(data => {
+            const movies = data.results
+            res.render('movie/list-search', { movies })
+        })
+        .catch(err => next(err))
+})
+
 // details movies
 
 router.get('/movie/:movie_id/details', (req, res, next) => {

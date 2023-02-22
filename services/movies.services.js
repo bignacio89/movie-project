@@ -24,7 +24,7 @@ class MovieApi {
     // Search movie by title
 
     getTitle = (searchFor) => {
-        return this.api.get(`/search/movie?api_key=6368d7de1031af85856eeb00f048afbf&language=en-US&query=${searchFor}`).then(({ data }) => data)
+        return this.api.get(`/search/movie?api_key=${API_KEY}&language=en-US&query=${searchFor}`).then(({ data }) => data)
     }
 
 }
