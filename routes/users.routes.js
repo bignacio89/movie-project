@@ -35,6 +35,8 @@ router.get('/user/:id', isLoggedIn, (req, res, next) => {
                 })
         })
         .catch(err => next(err))
+
+
 })
 
 
