@@ -12,7 +12,7 @@ const User = require('./../models/User.model')
 
 // search random movie page
 
-router.get('/movie/search', (req, res, next) => {
+router.get('/movie/search-random', (req, res, next) => {
     res.render('movie/random-form')
 })
 

@@ -1,44 +1,54 @@
 <div class="container">
-
-    <div class="row justify-content-center">
-
-        <h1> Movie Details: </h1>
-
-        <h2>{{movie.original_title}}</h2>
-        <hr>
-        <img src="https://www.themoviedb.org/t/p/w440_and_h660_face{{movie.poster_path}}" alt="movie">
-        <hr>
-        <p>Overview: {{movie.overview}}</p>
-        <hr>
-        <p>Genre: {{movie.genres.[0].name}}</p>
-        <p>Score: {{movie.vote_average}}</p>
-        <p>Runtime: {{movie.runtime}} min</p>
-
-
+    <div class="container col-xl-9">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="col-lg-6">
+                <h1 class="display-5 fw-bold lh-1 mb-3">{{movie.original_title}}</h1>
+                <p>{{movie.overview}}</p>
+                <hr>
+                <p>Genre: {{movie.genres.[0].name}}</p>
+                <p>Score: {{movie.vote_average}}</p>
+                <p>Runtime: {{movie.runtime}} min</p>
+            </div>
+            <div class="col-10 col-sm-8 col-lg-6">
+                <img src="https://www.themoviedb.org/t/p/w440_and_h660_face{{movie.poster_path}}"
+                    class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+            </div>
+        </div>
     </div>
-    <div class="row justify-content-center">
-        <h2>Comments:</h2>
-        {{#each comments}}
-        <p class="card-text">{{owner.username}}</p>
-        <p class="card-text">{{text}}</p>
-        <form action="/comments/{{_id}}/delete" method="POST">
-            <input type="submit" value="Delete" class="btn btn-danger btn-sm">
-            <input type="hidden" name="movie" value={{movie}}>
-        </form>
-        {{/each}}
-        <form action='/comments' method="POST">
-            <div class="mb-3">
-                <label for="text" class="form-label">Comment:</label>
-                <input type="text" class="form-control" id="text" name="text">
-            </div>
-            <input type="hidden" name="movie" value={{movie.id}}>
+    <div class="container">
+        <div class="row justify-content-center">
+            <h2>Comments:</h2>
+            {{#each comments}}
+            <ul class="list-unstyled">
+                <li class="media">
+                    <div class="d-flex">
+                        {{!-- <div class="flex-shrink-0">
+                            <img class="mr-3 rounded-circle img-fluid" src="{{owner.avatar}}" alt="">
+                        </div> --}}
+                        <div class="flex-grow-1 ms-3">{{text}}</div>
+                        <p class="flex-grow-1 ms-3"></p>comment by: {{owner.username}}</p>
+                    </div>
+                    <form action="/comments/{{_id}}/delete" method="POST">
+                        <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                        <input type="hidden" name="movie" value={{movie}}>
+                    </form>
+                </li>
+            </ul>
+            {{/each}}
+            <form action='/comments' method="POST">
+                <div class="mb-3">
+                    <label for="text" class="form-label">Comment:</label>
+                    <input type="text" class="form-control" id="text" name="text">
+                </div>
+                <input type="hidden" name="movie" value={{movie.id}}>
 
-            <div class="d-grid mt-5">
-                <button type="submit" class="btn btn-dark btn-lg">Add comment</button>
-            </div>
+                <div class="d-grid mt-5">
+                    <button type="submit" class="btn btn-dark">Add comment</button>
+                </div>
 
-        </form>
+            </form>
 
+        </div>
     </div>
 
 </div>
