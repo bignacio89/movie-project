@@ -11,20 +11,20 @@ class MovieApi {
 
     // Search Movie by ID..for api tryou
 
-    getMovie = (id) => {
-        return this.api.get(`/movie/${id}?api_key=${API_KEY}&language=en-US`).then(({ data }) => data)
+    getMovieById = (id) => {
+        return this.api.get(`/movie/${id}?api_key=${API_KEY}&language=en-US`)
     }
 
     // Search movie by year, rate and genre
 
     getRandom = (year, rate, genre) => {
-        return this.api.get(`/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=vote_average.desc&page=1&primary_release_year=${year}&vote_count.gte=500&vote_average.gte=${rate}&with_genres=${genre}`).then(({ data }) => data)
+        return this.api.get(`/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=vote_average.desc&page=1&primary_release_year=${year}&vote_count.gte=500&vote_average.gte=${rate}&with_genres=${genre}`)
     }
 
     // Search movie by title
 
-    getTitle = (searchFor) => {
-        return this.api.get(`/search/movie?api_key=${API_KEY}&language=en-US&query=${searchFor}`).then(({ data }) => data)
+    searchMovie = (searchFor) => {
+        return this.api.get(`/search/movie?api_key=${API_KEY}&language=en-US&query=${searchFor}`)
     }
 
 }

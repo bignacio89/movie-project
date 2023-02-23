@@ -5,21 +5,19 @@ const Movie = require('../models/Movie.model')
 const { isLoggedIn, isLoggedOut, checkRole } = require('../middlewares/route-guard');
 
 
-
-
 router.get('/comments', (req, res, next) => {
+
     Comment
         .find()
         .then(comment => res.render('movie/movie-details', { comment }))
         .catch(err => next(err))
 })
 
+
 router.post('/comments', isLoggedIn, (req, res, next) => {
 
-
-
     const { text, movie } = req.body
-    const owner = req.session.currentUser._id
+    const { _id: owner } = req.session.currentUser
 
     Comment
         .create({ text, movie, owner })
@@ -28,6 +26,7 @@ router.post('/comments', isLoggedIn, (req, res, next) => {
 })
 
 router.post('/comments/:id/delete', isLoggedIn, (req, res, next) => {
+
     const { movie } = req.body
     const { id } = req.params
 

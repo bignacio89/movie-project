@@ -13,29 +13,34 @@ router.get('/user/list', isLoggedIn, (req, res, next) => {
 
     User
         .find()
+        .select({ username: 1, avatar: 1, description: 1 })
+        .sort({ username: 1 })
         .then(users => res.render('user/list', { users }))
         .catch(err => next(err))
 })
 
+
 // Render user profile
 router.get('/user/:id', isLoggedIn, (req, res, next) => {
+
     const { id } = req.params
+
     User
         .findById(id)
         .then(user => {
             const isADMIN = req.session.currentUser?.role === 'ADMIN'
             const recomMovies = user.recommendations.map(elm => {
-                return movieApi.getMovie(elm)
+                return movieApi.getMovieById(elm)
             })
             Promise
                 .all(recomMovies)
-                .then((movie) => {
-                    res.render('user/profile', { user, movie, isADMIN })
+                .then((movies) => {
+                    console.log(movies)
+
+                    res.render('user/profile', { user, movies, isADMIN })
                 })
         })
         .catch(err => next(err))
-
-
 })
 
 
@@ -53,6 +58,7 @@ router.get('/user/:id/edit', isLoggedIn, checkRole('ADMIN'), (req, res, next) =>
 
 // Edit form handler
 router.post('/user/:id/edit', isLoggedIn, checkRole('ADMIN'), uploaderMiddleware.single('avatar'), (req, res, next) => {
+
     const { id } = req.params
     const { username, email, description } = req.body
     const { path: avatar } = req.file

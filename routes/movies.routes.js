@@ -5,20 +5,21 @@ const router = express.Router();
 const Movie = require('../models/Movie.model')
 
 router.get('/movies/list', (req, res, next) => {
+
     Movie
         .find()
         .then(movies => res.render('movies/list', { movies }))
         .catch(err => next(err))
 })
 
-router.get('/movies/create', checkRole('ADMIN'), (req, res, next) => {
-    Movie
-        .find()
-        .then(movies => res.render('movies/create', { movies }))
-        .catch(err => next(err))
+
+router.get('/movies/create', isLoggedIn, checkRole('ADMIN'), (req, res, next) => {
+    res.render('movies/create')
 })
 
-router.post('/movies/create', checkRole('ADMIN'), uploaderMiddleware.single('poster'), (req, res, next) => {
+
+router.post('/movies/create', isLoggedIn, checkRole('ADMIN'), uploaderMiddleware.single('poster'), (req, res, next) => {
+
     const { original_title, release_date, runtime, genres, overview, vote_average } = req.body
     const { path: poster_path } = req.file
 
@@ -39,7 +40,7 @@ router.get('/movies/:id', (req, res, next) => {
 })
 
 
-router.get('/movies/:id/edit', checkRole('ADMIN'), (req, res, next) => {
+router.get('/movies/:id/edit', isLoggedIn, checkRole('ADMIN'), (req, res, next) => {
 
     const { id } = req.params
 
@@ -50,7 +51,8 @@ router.get('/movies/:id/edit', checkRole('ADMIN'), (req, res, next) => {
 })
 
 
-router.post('/movies/:id/edit', checkRole('ADMIN'), uploaderMiddleware.single('poster'), (req, res, next) => {
+router.post('/movies/:id/edit', isLoggedIn, checkRole('ADMIN'), uploaderMiddleware.single('poster'), (req, res, next) => {
+
     const { id } = req.params
     const { original_title, release_date, runtime, genres, overview, vote_average } = req.body
     const { path: poster_path } = req.file
@@ -62,7 +64,7 @@ router.post('/movies/:id/edit', checkRole('ADMIN'), uploaderMiddleware.single('p
 })
 
 
-router.post('/movies/:id/delete', checkRole('ADMIN'), (req, res, next) => {
+router.post('/movies/:id/delete', isLoggedIn, checkRole('ADMIN'), (req, res, next) => {
 
     const { id } = req.params
 

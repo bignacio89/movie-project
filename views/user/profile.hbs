@@ -44,14 +44,14 @@
             <div class="container">
 
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    {{#each movie}}
+                    {{#each movies}}
                     <div class="col">
                         <div class="card shadow-sm">
                             <img class="bd-placeholder-img card-img-top" height="100%"
-                                src="https://www.themoviedb.org/t/p/w440_and_h660_face{{poster_path}}" alt="">
+                                src="https://www.themoviedb.org/t/p/w440_and_h660_face{{data.poster_path}}" alt="">
                             <div class="card-body">
-                                <h4>{{original_title}}</h4>
-                                <p class="card-text">{{overview}}</p>
+                                <h4>{{data.original_title}}</h4>
+                                <p class="card-text">{{data.overview}}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <a href='/movie/{{id}}/details'
@@ -62,7 +62,7 @@
 
 
                                     </div>
-                                    <small class="text-muted">{{runtime}} min.</small>
+                                    <small class="text-muted">{{data.runtime}} min.</small>
                                 </div>
                             </div>
                         </div>
