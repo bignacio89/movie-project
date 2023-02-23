@@ -1,13 +1,10 @@
 <div class="container">
-
     <div class="row justify-content-center">
-
         <h2> Movie Random List </h2>
         <div class="row">
             {{#each movies }}
             <div class="card col-md-3 m-2 mb-4">
                 <form action="/recommendations/{{id}}" method="POST">
-
 
                     <img src="https://www.themoviedb.org/t/p/w440_and_h660_face{{poster_path}}" alt="image">
                     <h3>{{original_title}}</h3>
@@ -20,9 +17,6 @@
                 <a href='/movie/{{id}}/details' class="btn btn-primary">Go to details</a>
             </div>
             {{/each}}
-
         </div>
-
     </div>
-
 </div>

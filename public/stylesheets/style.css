@@ -10,6 +10,10 @@ img {
   margin-bottom: 50px;
 }
 
+#menu-web {
+  background-color: #FF851B;
+}
+
 
 .form-signin {
   max-width: 330px;
@@ -34,4 +38,9 @@ img {
 
 .text-small {
   font-size: 85%;
+}
+
+#ini-btn {
+  background-color: #FF851B;
+  border-color: #FF851B
 }

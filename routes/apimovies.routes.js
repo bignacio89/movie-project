@@ -73,6 +73,7 @@ router.post('/recommendations/:movie_id', isLoggedIn, (req, res, next) => {
 
     const { movie_id } = req.params
     const { _id: user_id } = req.session.currentUser
+    console.log('ESSSSSSTOYYYYYYYY ACAAAA', user_id)
 
     User
         .findByIdAndUpdate(user_id, { $addToSet: { recommendations: movie_id } })
