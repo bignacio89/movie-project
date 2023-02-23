@@ -2,12 +2,16 @@ body {
   font-family: sans-serif;
 }
 
-/* img {
+img {
   width: 100%;
-} */
+}
 
 .nav-menu {
   margin-bottom: 50px;
+}
+
+#menu-web {
+  background-color: #FF851B;
 }
 
 
@@ -34,4 +38,9 @@ body {
 
 .text-small {
   font-size: 85%;
+}
+
+#ini-btn {
+  background-color: #FF851B;
+  border-color: #FF851B
 }

@@ -3,17 +3,26 @@
     <br>
     <div class="row">
         {{#each users}}
-        <div class="card col-md-3 m-2 mb-4" style="width: 18rem;">
-            <img src="{{avatar}}" class="card-img-top" alt="avatar">
-            <div class="card-body">
-                <h5 class="card-title">{{username}}</h5>
-                <p class="card-text">Description: {{description}}</p>
-                <div class="row">
 
-                    <a href="/user/{{id}}" class="btn btn-dark btn-sm">Go to profile</a>
+
+        <div class="card col-md-3 m-2 mb-4" style="width: 18rem;">
+            <div class="col align-self-center pt-2">
+                <img src="{{avatar}}" class="card-img-top" alt="avatar"
+                    style="width: 200px; height: 200px; object-fit: cover">
+            </div>
+            <div class="col">
+                <div class="card-body">
+                    <h5 class="card-title">{{username}}</h5>
+                    <p class="card-text">Description: {{description}}</p>
+                    <div class="row">
+
+                        <a href="/user/{{id}}" class="btn btn-dark btn-sm">Go to profile</a>
+                    </div>
                 </div>
             </div>
+
         </div>
+
         {{/each}}
     </div>
 </div>
