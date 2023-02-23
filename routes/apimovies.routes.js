@@ -12,12 +12,12 @@ const User = require('./../models/User.model')
 
 // search random movie page
 
-router.get('/movie/search-random', (req, res, next) => {
+router.get('/movie/search-random', isLoggedIn, (req, res, next) => {
     res.render('movie/random-form')
 })
 
 
-router.get('/movie/random', (req, res, next) => {
+router.get('/movie/random', isLoggedIn, (req, res, next) => {
 
     const { year, rate, genre } = req.query
 
@@ -32,7 +32,7 @@ router.get('/movie/random', (req, res, next) => {
 
 
 //search for title
-router.get('/movie/search', (req, res, next) => {
+router.get('/movie/search', isLoggedIn, (req, res, next) => {
 
     const { search } = req.query
 
@@ -49,7 +49,7 @@ router.get('/movie/search', (req, res, next) => {
 
 // details movies
 
-router.get('/movie/:movie_id/details', (req, res, next) => {
+router.get('/movie/:movie_id/details', isLoggedIn, (req, res, next) => {
 
     const { movie_id } = req.params
 

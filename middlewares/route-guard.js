@@ -25,4 +25,12 @@ const checkRole = (...roles) => (req, res, next) => {
     }
 }
 
+// const canEdit = (req, res, next) => {
+
+//     const user_id = req.session.currentUser._id
+//     const {idEdit} = req.params
+
+//     if (req.session.currentUser.role)
+// }
+
 module.exports = { isLoggedIn, isLoggedOut, checkRole }

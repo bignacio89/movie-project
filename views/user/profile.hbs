@@ -54,9 +54,9 @@
                                 <p class="card-text">{{data.overview}}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <a href='/movie/{{id}}/details'
+                                        <a href='/movie/{{data.id}}/details'
                                             class="btn btn-sm btn-outline-secondary">View</a>
-                                        <form action="/removeFromFav/{{id}}" method="POST">
+                                        <form action="/removeFromFav/{{data.id}}" method="POST">
                                             <button type="submit" class="btn btn-sm btn-outline-secondary">Remove from
                                                 Recommendations</button>
                                         </form>
