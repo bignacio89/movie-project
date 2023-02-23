@@ -35,8 +35,6 @@ router.get('/user/:id', isLoggedIn, (req, res, next) => {
             Promise
                 .all(recomMovies)
                 .then((movies) => {
-                    console.log(movies)
-
                     res.render('user/profile', { user, movies, isADMIN })
                 })
         })
