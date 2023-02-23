@@ -15,12 +15,8 @@
       <header id="menu-web" class="p-3">
          <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-               <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                  {{!-- <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                     <use xlink:href="/" />
-                  </svg> --}}
-                  <img src="../public/images/critiks-logo.png" alt="logo">
-               </a>
+               <a href="/" id="logo"
+                  class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">KRITICS</a>
 
                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                   <li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
@@ -33,7 +29,7 @@
                </ul>
 
                <form action="/movie/search" method="GET" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                  <input name="search" type="search" class="form-control form-control-dark text-bg-dark"
+                  <input name="search" type="search" class="form-control form-control-white text-bg-white"
                      placeholder="Search..." aria-label="Search">
                </form>
 
@@ -41,9 +37,9 @@
                <div class="d-flex text-end">
                   <a class="btn btn-outline-light me-2" href="/login">Log In</a>
                   <form action="/logout" method="POST">
-                     <button class="btn btn-outline-danger me-2">Log Out</button>
+                     <button class="btn btn-outline-dark me-2">Log Out</button>
                   </form>
-                  <a class="btn btn-warning" href="/signup">Sign Up</a>
+                  <a class="btn btn-warning" id="bt-out" href="/signup">Sign Up</a>
                </div>
             </div>
          </div>
