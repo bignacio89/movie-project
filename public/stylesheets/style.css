@@ -6,6 +6,22 @@ img {
   width: 100%;
 }
 
+h3 {
+  font-size: 1.1em;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.textWay {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-size: 0.9em;
+}
+
 .nav-menu {
   margin-bottom: 50px;
 }
@@ -43,4 +59,13 @@ img {
 #ini-btn {
   background-color: #FF851B;
   border-color: #FF851B
+}
+
+/* #logo {
+  font-family: "Papyrus", fantasy;
+} */
+
+#bt-out {
+  background-color: #1bff1f;
+  border-color: #1bff1f
 }
