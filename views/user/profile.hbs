@@ -56,8 +56,9 @@
                                     <div class="btn-group">
                                         <a href='/movie/{{id}}/details'
                                             class="btn btn-sm btn-outline-secondary">View</a>
-                                        <form action="/favorites/{{id}}" method="POST">
-                                            <button class="btn btn-sm btn-outline-secondary">Delete</button>
+                                        <form action="/removeFromFav/{{id}}" method="POST">
+                                            <button type="submit" class="btn btn-sm btn-outline-secondary">Remove from
+                                                Recommendations</button>
                                         </form>
 
 

@@ -5,7 +5,7 @@
                 <h1 class="display-5 fw-bold lh-1 mb-3">{{movie.original_title}}</h1>
                 <p>{{movie.overview}}</p>
                 <hr>
-                <p>Genre: {{movie.genres.[0].name}}</p>
+                <p>Genre: {{movie.genres.[0].name}}, {{movie.genres.[1].name}}</p>
                 <p>Score: {{movie.vote_average}}</p>
                 <p>Runtime: {{movie.runtime}} min</p>
             </div>
@@ -15,40 +15,83 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row justify-content-center">
-            <h2>Comments:</h2>
-            {{#each comments}}
-            <ul class="list-unstyled">
-                <li class="media">
-                    <div class="d-flex">
-                        {{!-- <div class="flex-shrink-0">
-                            <img class="mr-3 rounded-circle img-fluid" src="{{owner.avatar}}" alt="">
-                        </div> --}}
-                        <div class="flex-grow-1 ms-3">{{text}}</div>
-                        <p class="flex-grow-1 ms-3"></p>comment by: {{owner.username}}</p>
+    {{!-- //PRUEBA --}}
+
+    <section style="background-color: #281e1e;">
+        <div class="container my-5 py-5">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-12 col-lg-10">
+                    <div class="card text-dark">
+                        <div class="card-body p-4">
+                            <h4 class="mb-0">Recent comments</h4>
+                            <p class="fw-light mb-4 pb-2">Latest Comments section by users</p>
+                            {{#each comments}}
+                            <div class="d-flex flex-start">
+                                <img class="img-thumbnail" src="{{owner.avatar}}" alt="avatar" width="60" height="60" />
+                                <div>
+                                    <h6 class="fw-bold mb-1">{{owner.username}}</h6>
+                                    <div class="d-flex align-items-center mb-3">
+                                        <a href="#!" class="link-muted"><i class="fas fa-pencil-alt ms-2"></i></a>
+                                        <a href="#!" class="link-muted"><i class="fas fa-redo-alt ms-2"></i></a>
+                                        <a href="#!" class="link-muted"><i class="fas fa-heart ms-2"></i></a>
+                                    </div>
+                                    <p class="mb-0">
+                                        {{text}}
+                                    </p>
+                                </div>
+                            </div>
+                            {{/each}}
+                            <form action='/comments' method="POST">
+                                <div class="mb-3">
+                                    <label for="text" class="form-label">Comment:</label>
+                                    <input type="text" class="form-control" id="text" name="text">
+                                </div>
+                                <input type="hidden" name="movie" value={{movie.id}}>
+
+                                <div class="d-grid mt-5">
+                                    <button type="submit" class="btn btn-dark">Add comment</button>
+                                </div>
+
+                            </form>
+                        </div>
+
+                        {{!-- //--------------------------------------------------------------- --}}
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <h2>Comments:</h2>
+                                {{#each comments}}
+                                <ul class="list-unstyled">
+                                    <li class="media">
+                                        <div class="d-flex">
+                                            {{!-- <div class="flex-shrink-0">
+                                                <img class="mr-3 rounded-circle img-fluid" src="{{owner.avatar}}"
+                                                    alt="">
+                                            </div> --}}
+                                            <div class="flex-grow-1 ms-3">{{text}}</div>
+                                            <p class="flex-grow-1 ms-3"></p>comment by: {{owner.username}}</p>
+                                        </div>
+                                        <form action="/comments/{{_id}}/delete" method="POST">
+                                            <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                            <input type="hidden" name="movie" value={{movie}}>
+                                        </form>
+                                    </li>
+                                </ul>
+                                {{/each}}
+                                <form action='/comments' method="POST">
+                                    <div class="mb-3">
+                                        <label for="text" class="form-label">Comment:</label>
+                                        <input type="text" class="form-control" id="text" name="text">
+                                    </div>
+                                    <input type="hidden" name="movie" value={{movie.id}}>
+
+                                    <div class="d-grid mt-5">
+                                        <button type="submit" class="btn btn-dark">Add comment</button>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                        </div>
+                        {{!-- <a href='/user/{{id}}' class="btn btn-dark">Back to profile</a> --}}
+
                     </div>
-                    <form action="/comments/{{_id}}/delete" method="POST">
-                        <input type="submit" value="Delete" class="btn btn-danger btn-sm">
-                        <input type="hidden" name="movie" value={{movie}}>
-                    </form>
-                </li>
-            </ul>
-            {{/each}}
-            <form action='/comments' method="POST">
-                <div class="mb-3">
-                    <label for="text" class="form-label">Comment:</label>
-                    <input type="text" class="form-control" id="text" name="text">
-                </div>
-                <input type="hidden" name="movie" value={{movie.id}}>
-
-                <div class="d-grid mt-5">
-                    <button type="submit" class="btn btn-dark">Add comment</button>
-                </div>
-
-            </form>
-
-        </div>
-    </div>
-
-</div>
