@@ -2,14 +2,16 @@ const express = require('express');
 const router = express.Router();
 const Comment = require('./../models/Comment.model')
 const Movie = require('../models/Movie.model')
-const { isLoggedIn, isLoggedOut, checkRole } = require('../middlewares/route-guard');
+const { isLoggedIn, isLoggedOut, checkRole, editMyFav } = require('../middlewares/route-guard');
 
 
 router.get('/comments', (req, res, next) => {
 
     Comment
         .find()
-        .then(comment => res.render('movie/movie-details', { comment }))
+        .then(comment => {
+            res.render('movie/movie-details', { comment })
+        })
         .catch(err => next(err))
 })
 

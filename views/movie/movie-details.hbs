@@ -31,26 +31,28 @@
                                         <div class="d-flex flex-start">
                                             <img class="rounded-circle shadow-1-strong me-3"
                                                 style="width: 30px; height: 30px; object-fit: cover" ;
-                                                src=" {{owner.avatar}}" alt="avatar" id="avatar-com" />
+                                                src=" {{_doc.owner.avatar}}" alt="avatar" id="avatar-com" />
                                         </div>
                                     </div>
                                     <div class="col-9">
                                         <figure>
                                             <blockquote class="blockquote">
-                                                <p>{{text}}</p>
+                                                <p>{{_doc.text}}</p>
                                             </blockquote>
                                             <figcaption class="blockquote-footer">
-                                                Comment by <cite title="Source Title">{{owner.username}}</cite>
+                                                Comment by <cite title="Source Title">{{_doc.owner.username}}</cite>
                                             </figcaption>
                                         </figure>
                                     </div>
                                     <div class="col-2">
                                         <div class="position-relative py-10 px-5">
                                             <div>
+                                                {{!-- {{#if isDelete}} --}}
                                                 <form action="/comments/{{_id}}/delete" method="POST">
                                                     <input type="submit" value="Delete" class="btn btn-dark btn-sm">
                                                     <input type="hidden" name="movie" value={{movie}}>
                                                 </form>
+                                                {{!-- {{/if}} --}}
                                             </div>
                                         </div>
                                     </div>

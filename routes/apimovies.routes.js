@@ -60,7 +60,13 @@ router.get('/movie/:movie_id/details', isLoggedIn, (req, res, next) => {
             Comment
                 .find({ movie: movie_id })
                 .populate('owner')
-                .then((comments) => res.render('movie/movie-details', { movie: response.data, comments }))
+                .then((comments) => {
+                    // comments = comments.map(elm => {
+                    //     const isDelete = req.session.currentUser._id === elm.owner.toString()
+                    //     return { ...elm, isDelete }
+                    // })
+                    res.render('movie/movie-details', { movie: response.data, comments })
+                })
         })
         .catch(err => next(err))
 
@@ -73,11 +79,10 @@ router.post('/recommendations/:movie_id', isLoggedIn, (req, res, next) => {
 
     const { movie_id } = req.params
     const { _id: user_id } = req.session.currentUser
-    console.log('ESSSSSSTOYYYYYYYY ACAAAA', user_id)
 
     User
         .findByIdAndUpdate(user_id, { $addToSet: { recommendations: movie_id } })
-        .then(() => res.redirect(`/movie/search-random`))
+        .then(() => res.redirect(`/user/${user_id}`))
         .catch(err => next(err))
 
 })
