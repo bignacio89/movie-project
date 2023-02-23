@@ -80,5 +80,16 @@ router.post('/recommendations/:movie_id/:search', isLoggedIn, (req, res, next) =
 
 })
 
+router.post('/removeFromFav/:movie_id', isLoggedIn, (req, res, next) => {
+    const { movie_id } = req.params
+    const user_id = req.session.currentUser._id
+
+    User
+        .findByIdAndUpdate(user_id, { $pull: { recommendations: movie_id } })
+        .then(() => res.redirect(`/user/${user_id}`))
+        .catch(err => next(err))
+
+})
+
 
 module.exports = router
