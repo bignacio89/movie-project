@@ -27,18 +27,23 @@
                             <p class="fw-light mb-4 pb-2">Latest Comments section by users</p>
                             {{#each comments}}
                             <div class="d-flex flex-start">
-                                <img class="img-thumbnail" src="{{owner.avatar}}" alt="avatar" width="60" height="60" />
+                                <img class="rounded-circle 1" src="{{owner.avatar}}" alt="avatar" width="90"
+                                    height="75" />
                                 <div>
-                                    <h6 class="fw-bold mb-1">{{owner.username}}</h6>
-                                    <div class="d-flex align-items-center mb-3">
+                                    <h6 class="fw-bold mb-1 d-flex">{{owner.username}}</h6>
+                                    {{!-- <div class="d-flex align-items-center mb-3">
                                         <a href="#!" class="link-muted"><i class="fas fa-pencil-alt ms-2"></i></a>
                                         <a href="#!" class="link-muted"><i class="fas fa-redo-alt ms-2"></i></a>
                                         <a href="#!" class="link-muted"><i class="fas fa-heart ms-2"></i></a>
-                                    </div>
+                                    </div> --}}
                                     <p class="mb-0">
                                         {{text}}
                                     </p>
                                 </div>
+                                <form action="/comments/{{_id}}/delete" method="POST">
+                                    <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                    <input type="hidden" name="movie" value={{movie}}>
+                                </form>
                             </div>
                             {{/each}}
                             <form action='/comments' method="POST">
@@ -56,17 +61,14 @@
                         </div>
 
                         {{!-- //--------------------------------------------------------------- --}}
-                        <div class="container">
+                        {{!-- <div class="container">
                             <div class="row justify-content-center">
                                 <h2>Comments:</h2>
                                 {{#each comments}}
                                 <ul class="list-unstyled">
                                     <li class="media">
                                         <div class="d-flex">
-                                            {{!-- <div class="flex-shrink-0">
-                                                <img class="mr-3 rounded-circle img-fluid" src="{{owner.avatar}}"
-                                                    alt="">
-                                            </div> --}}
+
                                             <div class="flex-grow-1 ms-3">{{text}}</div>
                                             <p class="flex-grow-1 ms-3"></p>comment by: {{owner.username}}</p>
                                         </div>
@@ -91,7 +93,7 @@
                                 </form>
 
                             </div>
-                        </div>
+                        </div> --}}
                         {{!-- <a href='/user/{{id}}' class="btn btn-dark">Back to profile</a> --}}
 
                     </div>
