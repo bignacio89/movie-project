@@ -38,8 +38,10 @@
                                         <a href='/movie/{{data.id}}/details'
                                             class="btn btn-sm btn-outline-secondary">View</a>
                                         <form action="/removeFromFav/{{data.id}}" method="POST">
+                                            {{#if ../isDelete}}
                                             <button type="submit" class="btn btn-sm btn-outline-secondary">Remove from
                                                 Recommendations</button>
+                                            {{/if}}
                                         </form>
                                     </div>
                                     <small class="text-muted">{{data.runtime}} min.</small>

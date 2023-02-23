@@ -25,12 +25,14 @@ const checkRole = (...roles) => (req, res, next) => {
     }
 }
 
-// const canEdit = (req, res, next) => {
+const editMyFav = (req, res, next) => {
+    const { user_id } = req.params
+    if (req.session.currentUser._id === user_id) {
+        next()
+    }
+    else {
+        res.render('auth/login', { errorMessage: 'Only creator' })
+    }
+}
 
-//     const user_id = req.session.currentUser._id
-//     const {idEdit} = req.params
-
-//     if (req.session.currentUser.role)
-// }
-
-module.exports = { isLoggedIn, isLoggedOut, checkRole }
+module.exports = { isLoggedIn, isLoggedOut, checkRole, editMyFav }

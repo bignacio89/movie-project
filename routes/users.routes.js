@@ -32,10 +32,11 @@ router.get('/user/:id', isLoggedIn, (req, res, next) => {
             const recomMovies = user.recommendations.map(elm => {
                 return movieApi.getMovieById(elm)
             })
+            const isDelete = req.session.currentUser._id === id
             Promise
                 .all(recomMovies)
                 .then((movies) => {
-                    res.render('user/profile', { user, movies, isADMIN })
+                    res.render('user/profile', { user, movies, isADMIN, isDelete })
                 })
         })
         .catch(err => next(err))

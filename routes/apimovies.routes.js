@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const axios = require("axios")
-const { isLoggedIn, isLoggedOut, checkRole } = require('../middlewares/route-guard');
+const { isLoggedIn, isLoggedOut, checkRole, editMyFav } = require('../middlewares/route-guard');
 const Comment = require('./../models/Comment.model')
 const Movie = require('../models/Movie.model')
 const MovieApi = require('../services/movies.services')
@@ -12,27 +12,28 @@ const User = require('./../models/User.model')
 
 // search random movie page
 
-router.get('/movie/search-random', isLoggedIn, (req, res, next) => {
+router.get('/movie/search-random', (req, res, next) => {
     res.render('movie/random-form')
 })
 
 
-router.get('/movie/random', isLoggedIn, (req, res, next) => {
+router.get('/movie/random', (req, res, next) => {
 
     const { year, rate, genre } = req.query
 
     movieApi
         .getRandom(year, rate, genre)
         .then(response => {
+            const isLogin = req.session.currentUser
             const movies = response.data.results
-            res.render('movie/list-random', { movies })
+            res.render('movie/list-random', { movies, isLogin })
         })
         .catch(err => next(err))
 })
 
 
 //search for title
-router.get('/movie/search', isLoggedIn, (req, res, next) => {
+router.get('/movie/search', (req, res, next) => {
 
     const { search } = req.query
 
@@ -68,7 +69,7 @@ router.get('/movie/:movie_id/details', isLoggedIn, (req, res, next) => {
 
 // add movie to user recommendations 
 
-router.post('/recommendations/:movie_id/:search', isLoggedIn, (req, res, next) => {
+router.post('/recommendations/:movie_id', isLoggedIn, (req, res, next) => {
 
     const { movie_id } = req.params
     const { _id: user_id } = req.session.currentUser
@@ -82,7 +83,7 @@ router.post('/recommendations/:movie_id/:search', isLoggedIn, (req, res, next) =
 
 router.post('/removeFromFav/:movie_id', isLoggedIn, (req, res, next) => {
     const { movie_id } = req.params
-    const user_id = req.session.currentUser._id
+    const { _id: user_id } = req.session.currentUser
 
     User
         .findByIdAndUpdate(user_id, { $pull: { recommendations: movie_id } })
