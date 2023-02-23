@@ -44,7 +44,7 @@ router.get('/user/:id', isLoggedIn, (req, res, next) => {
 
 
 // Edit form render
-router.get('/user/:id/edit', isLoggedIn, checkRole('ADMIN'), (req, res, next) => {
+router.get('/user/:id/edit', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
 
@@ -56,7 +56,7 @@ router.get('/user/:id/edit', isLoggedIn, checkRole('ADMIN'), (req, res, next) =>
 
 
 // Edit form handler
-router.post('/user/:id/edit', isLoggedIn, checkRole('ADMIN'), uploaderMiddleware.single('avatar'), (req, res, next) => {
+router.post('/user/:id/edit', isLoggedIn, uploaderMiddleware.single('avatar'), (req, res, next) => {
 
     const { id } = req.params
     const { username, email, description } = req.body
@@ -71,7 +71,7 @@ router.post('/user/:id/edit', isLoggedIn, checkRole('ADMIN'), uploaderMiddleware
 
 
 // Delete user
-router.post('/user/:id/delete', isLoggedIn, checkRole('ADMIN'), (req, res, next) => {
+router.post('/user/:id/delete', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
 
