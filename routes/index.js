@@ -3,6 +3,9 @@ module.exports = app => {
     const indexRoutes = require("./index.routes")
     app.use("/", indexRoutes)
 
+    const infoRoutes = require("./info.routes")
+    app.use("/", infoRoutes)
+
     const usersRoutes = require("./users.routes")
     app.use("/", usersRoutes)
 
