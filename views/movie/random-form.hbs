@@ -1,52 +1,67 @@
-<div class="container">
-    <div class="row justify-content-center pt-5">
-
-        <h1>Look for random movie</h1>
-
-        <form action="/movie/random" method="GET">
-
-            <div class="mb-3">
-                <label for="yearInput" class="form-label">Year:</label>
-                <input type="text" class="form-control" name="year" id="yearInput">
+<div class="bg-light">
+    <div class="container" id="random-form-container">
+        <div>
+            <div class="py-5 text-center">
+                <img id="logo-form" class="d-block mx-auto mb-4 pb-3 pt-2"
+                    src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_1-5bdc75aaebeb75dc7ae79426ddd9be3b2be1e342510f8202baf6bffa71d7f5c4.svg"
+                    alt="logo bd" srcset="">
+                <h1>Movies Form</h1>
+                <p class="lead pt-3">
+                    Whether you're in
+                    the mood for a classic film, a romantic comedy, or an action-packed adventure, our movie search form
+                    has
+                    got you
+                    covered. So sit back, relax, and let us help you find your next favorite movie!</p>
             </div>
 
-            <div class="mb-3">
-                <label for="rateInput" class="form-label">Rate:</label>
-                <input type="text" class="form-control" name="rate" id="rateInput">
-            </div>
 
-            <div class="mb-3">
-                <label for="genreInput" class="form-label">Genre:</label>
-                <select class="form-select" aria-label="Default select example" name="genre" id="genreInput">
-                    <option selected>Open this select menu</option>
-                    <option value="28">Action</option>
-                    <option value="12">Adventure</option>
-                    <option value="16">Animation</option>
-                    <option value="35">Comedy</option>
-                    <option value="99">Documentary</option>
-                    <option value="14">Fantasy</option>
-                    <option value="27">Horror</option>
-                    <option value="9648">Mystery</option>
-                    <option value="10749">Romance</option>
-                    <option value="53">Thriller</option>
-                    <option value="37">Western</option>
+            <h1>Look for random movie</h1>
+            <div class="row justify-content-center pt-5"></div>
+            <form class="pb-5" action="/movie/random" method="GET">
 
-                </select>
-            </div>
+                <div class="mb-3">
+                    <label for="yearInput" class="form-label">Year:</label>
+                    <input type="text" class="form-control" name="year" id="yearInput">
+                </div>
 
-            <div>
-                <button type="submit" class="btn btn-dark">Search</button>
-            </div>
+                <div class="mb-3">
+                    <label for="rateInput" class="form-label">Rate:</label>
+                    <input type="text" class="form-control" name="rate" id="rateInput">
+                </div>
 
-            {{#if errorMessage}}
-            <div id="errorMessage">
-                <p>{{errorMessage}}</p>
-            </div>
-            {{/if}}
+                <div class="mb-3">
+                    <label for="genreInput" class="form-label">Genre:</label>
+                    <select class="form-select" aria-label="Default select example" name="genre" id="genreInput">
+                        <option selected>Open this select menu</option>
+                        <option value="28">Action</option>
+                        <option value="12">Adventure</option>
+                        <option value="16">Animation</option>
+                        <option value="35">Comedy</option>
+                        <option value="99">Documentary</option>
+                        <option value="14">Fantasy</option>
+                        <option value="27">Horror</option>
+                        <option value="9648">Mystery</option>
+                        <option value="10749">Romance</option>
+                        <option value="53">Thriller</option>
+                        <option value="37">Western</option>
+
+                    </select>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-dark">Search</button>
+                </div>
+
+                {{#if errorMessage}}
+                <div id="errorMessage">
+                    <p>{{errorMessage}}</p>
+                </div>
+                {{/if}}
 
 
-        </form>
+            </form>
 
 
+        </div>
     </div>
 </div>
