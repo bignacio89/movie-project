@@ -1,108 +1,74 @@
-{{!-- <div class="container">
-    <div class="container px-4 py-5">
-        <h2 class="pb-2 border-bottom">Movie Lovers Recommendations</h2>
-        <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
-            <div class="col col-lg-3 d-flex flex-column align-items-start gap-2">
-                <img class="img-fluid img-thumbnail" src="{{user.avatar}}" alt="{{user.username}}"
-                    style="width: 200px; height: 200px; object-fit: cover">
-            </div>
-            <div class="col">
-                <div class="row row-cols-1 row-cols-sm-2 g-4">
-                    <div class="col d-flex flex-column gap-2">
-                        <h4 class="fw-semibold mb-0">Name:</h4>
-                        <p class="text-muted">{{user.username}}</p>
-                    </div>
-
-                    <div class="col d-flex flex-column gap-2">
-                        <h4 class="fw-semibold mb-0">Description:</h4>
-                        <p class="text-muted">{{user.description}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-
-
-    <section class="vh-50" style="background-color: #efb665;">
-        <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col col-md-9 col-lg-7 col-xl-5">
-                    <div class="card" style="border-radius: 15px;">
-                        <div class="card-body p-4">
-                            <div class="d-flex text-black">
-                                <div class="flex-shrink-0">
-                                    <img src={{user.avatar}} alt="Generic placeholder image"
-                                        class="img-fluid img-thumbnail"
-                                        style="width: 180px; height: 180px; border-radius: 10px; object-fit: cover">
+<section class="vh-50" style="background-color: #efb665;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-md-9 col-lg-7 col-xl-5">
+                <div class="card" style="border-radius: 15px;">
+                    <div class="card-body p-4">
+                        <div class="d-flex text-black">
+                            <div class="flex-shrink-0">
+                                <img src={{user.avatar}} alt="Generic placeholder image" class="img-fluid img-thumbnail"
+                                    style="width: 180px; height: 180px; border-radius: 10px; object-fit: cover">
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h5 class="mb-1">{{user.username}}</h5>
+                                <p class="text-muted">{{user.email}}</p>
+                                <div class="d-flex justify-content-start rounded-3 p-2 mb-2"
+                                    style="background-color: #efefef;">
+                                    <p class="text-muted">{{user.description}}
                                 </div>
-                                <div class="flex-grow-1 ms-3">
-                                    <h5 class="mb-1">{{user.username}}</h5>
-                                    <p class="text-muted">{{user.email}}</p>
-                                    <div class="d-flex justify-content-start rounded-3 p-2 mb-2"
-                                        style="background-color: #efefef;">
-                                        <p class="text-muted">{{user.description}}
-                                    </div>
-                                    {{#if isDelete}}
-                                    <div class="d-flex pt-1">
-                                        <a href="/user/{{user._id}}/edit"
-                                            class="btn btn-outline-dark me-1 flex-grow-1">Edit
-                                            Profile</a>
-                                        <form action="/user/{{user._id}}/delete" method="POST">
-                                            <input type="submit" value="Delete Profile"
-                                                class="btn btn-outline-dark me-1 flex-grow-1">
-                                        </form>
-                                    </div>
-                                    {{/if}}
+                                {{#if isDelete}}
+                                <div class="d-flex pt-1">
+                                    <a href="/user/{{user._id}}/edit" class="btn btn-outline-dark me-1 flex-grow-1">Edit
+                                        Profile</a>
+                                    <form action="/user/{{user._id}}/delete" method="POST">
+                                        <input type="submit" value="Delete Profile"
+                                            class="btn btn-outline-dark me-1 flex-grow-1">
+                                    </form>
                                 </div>
+                                {{/if}}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <div class="row">
-        <div class="album py-5 bg-light">
-            <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    {{#each movies}}
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <img class="bd-placeholder-img card-img-top" height="100%"
-                                src="https://www.themoviedb.org/t/p/w440_and_h660_face{{data.poster_path}}" alt="">
-                            <div class="card-body">
-                                <h4>{{data.original_title}}</h4>
-                                <p class="card-text">{{data.overview}}</p>
-                                <div class="avisa">
-                                    <div class="btn-group">
-                                        <a href='/movie/{{data.id}}/details'
-                                            class="btn btn-sm btn-outline-secondary">View</a>
-                                        <form action="/removeFromFav/{{data.id}}" method="POST">
-                                            {{#if ../isDelete}}
-                                            <button type="submit" class="btn btn-sm btn-outline-secondary">Remove from
-                                                Recommendations</button>
-                                            {{/if}}
-                                        </form>
-                                    </div>
-                                    <small class="text-muted">{{data.runtime}} min.</small>
+<div class="row">
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                {{#each movies}}
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="bd-placeholder-img card-img-top" height="100%"
+                            src="https://www.themoviedb.org/t/p/w440_and_h660_face{{data.poster_path}}" alt="">
+                        <div class="card-body">
+                            <h4>{{data.original_title}}</h4>
+                            <p class="card-text">{{data.overview}}</p>
+                            <div class="avisa">
+                                <div class="btn-group">
+                                    <a href='/movie/{{data.id}}/details'
+                                        class="btn btn-sm btn-outline-secondary">View</a>
+                                    <form action="/removeFromFav/{{data.id}}" method="POST">
+                                        {{#if ../isDelete}}
+                                        <button type="submit" class="btn btn-sm btn-outline-secondary">Remove from
+                                            Recommendations</button>
+                                        {{/if}}
+                                    </form>
                                 </div>
+                                <small class="text-muted">{{data.runtime}} min.</small>
                             </div>
                         </div>
                     </div>
-                    {{/each}}
                 </div>
+                {{/each}}
             </div>
         </div>
     </div>
-    {{!-- {{#if isDelete}}
-    <div>
-        <a href="/user/{{user._id}}/edit" class="btn btn-sm btn-outline-secondary">Edit Profile</a>
-        <form action="/user/{{user._id}}/delete" method="POST">
-            <input type="submit" value="Delete Profile" class="btn btn-sm btn-outline-secondary">
-        </form>
-    </div>
-    {{/if}} --}}
+</div>
 
-    <a href="/user/list" class="btn btn-dark">Back to list</a>
+
+<a href="/user/list" class="btn btn-dark">Back to list</a>
 </div>

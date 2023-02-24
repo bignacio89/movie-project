@@ -61,10 +61,6 @@ router.get('/movie/:movie_id/details', isLoggedIn, (req, res, next) => {
                 .find({ movie: movie_id })
                 .populate('owner')
                 .then((comments) => {
-                    // comments = comments.map(elm => {
-                    //     const isDelete = req.session.currentUser._id === elm.owner.toString()
-                    //     return { ...elm, isDelete }
-                    // })
                     res.render('movie/movie-details', { movie: response.data, comments })
                 })
         })
