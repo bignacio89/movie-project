@@ -6,10 +6,21 @@ img {
   width: 100%;
 }
 
+#logo {
+  background-color: #ee4b2b;
+  padding: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
 h3 {
   font-size: 1.1em;
   margin-top: 10px;
   font-weight: bold;
+}
+
+h2 {
+  font-size: 2.5em;
 }
 
 .textWay {
@@ -22,8 +33,19 @@ h3 {
   font-size: 0.9em;
 }
 
+#textWayProfile {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  font-size: 0.9em;
+}
+
 #menu-web {
   background-color: #FF851B;
+  font-size: 1.3rem
 }
 
 /* #img-user-list {} */
@@ -102,5 +124,12 @@ h3 {
 
 #box-about {
   background-color: rgb(239, 238, 238);
+}
 
+#random-form-container {
+  max-width: 960px;
+}
+
+#logo-form {
+  max-width: 150px;
 }

@@ -16,11 +16,11 @@
         </div>
     </div>
     <section>
-        <div class="container my-5 py-5">
+        <div class="container my-3 py-3" style="background-color: #fbfbfb;">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-12 col-lg-10">
-                    <div class="card text-dark">
-                        <div class="card-body p-4">
+                    <div class="card text-dark m-2">
+                        <div class="card-body p-3">
                             <h4 class="mb-0">Recent comments</h4>
                             <p class="fw-light mb-4 pb-2">Latest Comments section by users</p>
 
@@ -49,7 +49,7 @@
                                             <div>
                                                 {{!-- {{#if isDelete}} --}}
                                                 <form action="/comments/{{_id}}/delete" method="POST">
-                                                    <input type="submit" value="Delete" class="btn btn-dark btn-sm">
+                                                    <input type="submit" value="Delete" class="btn btn-danger btn-sm">
                                                     <input type="hidden" name="movie" value={{movie}}>
                                                 </form>
                                                 {{!-- {{/if}} --}}
@@ -67,7 +67,7 @@
                     </div>
 
                     <form action='/comments' method="POST">
-                        <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
+                        <div class="card-footer py-3 border-0 m-2">
                             <div class="d-flex flex-start w-100">
                                 <div class="form-outline w-100">
                                     <label for="text" class="form-label">Write comment:</label>
@@ -77,10 +77,9 @@
                             </div>
                             <input type="hidden" name="movie" value={{movie.id}}>
                         </div>
-                        <div class="d-grid mt-5">
-                            <button type="submit" class="btn btn-dark">Post comment</button>
+                        <div class="d-grid gap-2 col-4 mx-auto">
+                            <button type="submit" class="btn btn-success">Post comment</button>
                         </div>
-
                     </form>
                 </div>
             </div>

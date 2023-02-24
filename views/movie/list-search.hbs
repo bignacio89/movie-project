@@ -2,21 +2,27 @@
 
     <div class="row justify-content-center pt-5">
 
-        <h2> Movie List </h2>
+        <h2> Movies results for "{{search}}" Movie List </h2>
+        <hr>
         <div class="row">
             {{#each movies }}
-            <div class="card col-md-3 m-2 mb-4">
+            <div class="card col-md-3 m-2 mb-4 mt-4">
                 <form action="/recommendations/{{id}}" method="POST">
 
 
-                    <img src="https://www.themoviedb.org/t/p/w440_and_h660_face{{poster_path}}" alt="image">
+                    <img class="pt-2" src="https://www.themoviedb.org/t/p/w440_and_h660_face{{poster_path}}"
+                        alt="image">
                     <h3>{{original_title}}</h3>
-                    <p>{{overview}}</p>
-                    <button type="submit" class="btn btn-dark">Add to Recommendations</button>
+                    <p class="textWay">{{overview}}</p>
 
-
+                    <div class="btn-group pb-2">
+                        <a href='/movie/{{id}}/details' class="btn btn-sm btn-outline-secondary">Go to
+                            details</a>
+                        {{#if ...isLogin}}
+                        <button type="submit" class="btn btn-sm btn-outline-secondary">Add to List</button>
+                        {{/if}}
+                    </div>
                 </form>
-                <a href='/movie/{{id}}/details' class="btn btn-primary">Go to details</a>
             </div>
             {{/each}}
 

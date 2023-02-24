@@ -1,21 +1,21 @@
 <div class="container">
-    <div class="container px-4 py-5">
+    <div class="container px-4 py-5 pb-2">
         <h2 class="pb-2 border-bottom">Movie Lovers Recommendations</h2>
-        <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
+        <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-2 pt-4">
             <div class="col col-lg-3 d-flex flex-column align-items-start gap-2">
                 <img class="img-fluid img-thumbnail" src="{{user.avatar}}" alt="{{user.username}}"
                     style="width: 100px; height: 100px; object-fit: cover">
             </div>
             <div class="col">
-                <div class="row row-cols-1 row-cols-sm-2 g-4">
+                <div class="row row-cols-1 row-cols g-2">
                     <div class="col d-flex flex-column gap-2">
                         <h4 class="fw-semibold mb-0">Name:</h4>
-                        <p class="text-muted">{{user.username}}</p>
+                        <p class="text-muted fs-5">{{user.username}}</p>
                     </div>
 
                     <div class="col d-flex flex-column gap-2">
                         <h4 class="fw-semibold mb-0">Description:</h4>
-                        <p class="text-muted">{{user.description}}</p>
+                        <p class="text-muted fs-5">{{user.description}}</p>
                     </div>
                 </div>
             </div>
@@ -33,11 +33,11 @@
                                 src="https://www.themoviedb.org/t/p/w440_and_h660_face{{data.poster_path}}" alt="">
                             <div class="card-body">
                                 <h4>{{data.original_title}}</h4>
-                                <p class="card-text">{{data.overview}}</p>
+                                <p class="card-text" id="textWayProfile">{{data.overview}}</p>
                                 <div class="avisa">
                                     <div class="btn-group">
                                         <a href='/movie/{{data.id}}/details'
-                                            class="btn btn-sm btn-outline-secondary">View</a>
+                                            class="btn btn-sm btn-outline-secondary">View Details</a>
                                         <form action="/removeFromFav/{{data.id}}" method="POST">
                                             {{#if ../isDelete}}
                                             <button type="submit" class="btn btn-sm btn-outline-secondary">Remove from
@@ -45,7 +45,7 @@
                                             {{/if}}
                                         </form>
                                     </div>
-                                    <small class="text-muted">{{data.runtime}} min.</small>
+                                    <small class="text-muted ps-2">{{data.runtime}} min.</small>
                                 </div>
                             </div>
                         </div>
@@ -64,5 +64,5 @@
     </div>
     {{/if}}
 
-    <a href="/user/list" class="btn btn-dark">Back to list</a>
+    <a href="/user/list" class="btn btn-dark mt-4">Back to list</a>
 </div>

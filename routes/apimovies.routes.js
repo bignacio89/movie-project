@@ -32,7 +32,8 @@ router.get('/movie/random', (req, res, next) => {
 })
 
 
-//search for title
+//search box
+
 router.get('/movie/search', (req, res, next) => {
 
     const { search } = req.query
@@ -41,7 +42,7 @@ router.get('/movie/search', (req, res, next) => {
         .searchMovie(search)
         .then(response => {
             const movies = response.data.results
-            res.render('movie/list-search', { movies })
+            res.render('movie/list-search', { movies, search })
         })
         .catch(err => next(err))
 
